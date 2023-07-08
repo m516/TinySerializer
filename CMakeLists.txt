@@ -3,11 +3,6 @@
 
 cmake_minimum_required (VERSION 3.12)
 
-# Options
-option(TINYMATRIXMATH_BUILD_TESTS    "Build all projects in the 'test' folder"     ON)
-option(TINYMATRIXMATH_BUILD_EXAMPLES "Build all projects in the 'examples' folder" ON)
-option(TINYMATRIXMATH_BUILD_DOCS     "Build all projects in the 'examples' folder" ON)
-
 
 # Define colors
 if(NOT WIN32)
@@ -30,8 +25,13 @@ if(NOT WIN32)
   set(BoldWhite   "${Esc}[1;37m")
 endif()
 
-project ("TinyMatrixMath" C CXX)
+project ("TinySerializer" C CXX)
 set (CMAKE_CXX_STANDARD 20) # We use new features like std::endian, std::float_32, ...
+
+# Options
+option(${PROJECT_NAME}_BUILD_TESTS    "Build all projects in the 'test' folder (requires GoogleTest)"     ON)
+option(${PROJECT_NAME}_BUILD_EXAMPLES "Build all projects in the 'examples' folder"                       ON)
+option(${PROJECT_NAME}_BUILD_DOCS     "Build documentation (requires Doxygen)"                            ON)
 
 
 # Set the macro/helper directory 
