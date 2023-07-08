@@ -46,69 +46,33 @@ message("${BoldMagenta}CMake utility directory: ${MACRO_DIRECTORY}${ColorReset}"
 
 
 # Serializer
-add_library (serializer ${PROJECT_SOURCES}
+add_library (tinyserializer ${PROJECT_SOURCES}
 src/Serializer.hpp
 src/Serializer.cpp
 )
-target_link_libraries (serializer)
-target_include_directories(serializer PUBLIC ${PROJECT_SOURCE_DIR}/src)
-target_compile_definitions(serializer PUBLIC USING_STANDARD_LIBRARY)
+target_link_libraries (tinyserializer)
+target_include_directories(tinyserializer PUBLIC ${PROJECT_SOURCE_DIR}/src)
+target_compile_definitions(tinyserializer PUBLIC USING_STANDARD_LIBRARY)
 
-
-# TinyMatrixMath
-add_library (tinymatrixmath ${PROJECT_SOURCES}
-src/TinyMatrixMath.hpp
-src/TMM_enable_if.hpp
-src/TMM_matrix.hpp
-src/TMM_matrix.cpp
-src/TinyMatrixMath.cpp
-)
-target_link_libraries (tinymatrixmath)
-target_include_directories(tinymatrixmath PUBLIC ${PROJECT_SOURCE_DIR}/src)
-target_compile_definitions(tinymatrixmath PUBLIC USING_STANDARD_LIBRARY)
-
-# TinyControlPolicy
-add_library (tinycontrolpolicies ${PROJECT_SOURCES}
-src/TCP_control_policy.hpp 
-src/TCP_controller_LTI.hpp 
-src/TCP_controller_passthrough.hpp 
-src/TCP_controller_PID.hpp 
-src/TCP_robot_link.hpp 
-src/TCP_states.hpp
-src/TCP_utils.hpp
-src/TCP_utils.cpp
-src/TinyControlPolicies.cpp 
-src/TinyControlPolicies.hpp
-)
-target_link_libraries (tinycontrolpolicies)
-target_include_directories(tinycontrolpolicies PUBLIC ${PROJECT_SOURCE_DIR}/src)
-target_compile_definitions(tinycontrolpolicies PUBLIC USING_STANDARD_LIBRARY)
-
-
-
-# Google Test
-message("${BoldYellow}Using local copy of the Google Test framework${ColorReset}")
-add_subdirectory(thirdparty/cmake/googletest)
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 
 
 message("${BoldYellow}Library search complete!${ColorReset}")
 
   
 # Include tests.
-if(TINYMATRIXMATH_BUILD_TESTS)
+if(${PROJECT_NAME}_BUILD_TESTS)
 include(CTest)
 add_subdirectory ("test")
 endif()
 
 
 # Include examples.
-if(TINYMATRIXMATH_BUILD_EXAMPLES)
+if(${PROJECT_NAME}_BUILD_EXAMPLES)
 add_subdirectory(cmake_examples)
 endif()
 
 # Documentation
-if(TINYMATRIXMATH_BUILD_DOCS)
+if(${PROJECT_NAME}_BUILD_DOCS)
 find_package(Doxygen)
 if(DOXYGEN_FOUND)
 set(DOXYGEN_GENERATE_HTML YES)
@@ -120,7 +84,7 @@ set(DOXYGEN_HTML_STYLESHEET        ${PROJECT_SOURCE_DIR}/docs/thirdparty/doxygen
 set(DOXYGEN_HTML_COLORSTYLE        LIGHT)
 set(DOXYGEN_USE_MDFILE_AS_MAINPAGE ${PROJECT_SOURCE_DIR}/README.md)
 doxygen_add_docs(
-  TMM_doxygen
+  ${PROJECT_NAME}_Doxygen
   ${PROJECT_SOURCE_DIR}/README.md
   ${PROJECT_SOURCE_DIR}/src
   COMMENT "Generate docs"
