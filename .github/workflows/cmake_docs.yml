@@ -27,7 +27,7 @@ jobs:
         mkdir build
         cd build
         cmake ..
-        make TinyMatrixMath_doxygen -j $(nproc)
+        make TinySerializer_Doxygen -j $(nproc)
 
     # Publish HTML to GitHub Pages
     - name: Publish HTML to GitHub Pages
