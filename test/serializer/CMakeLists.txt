@@ -19,10 +19,7 @@ FetchContent_MakeAvailable(googletest)
 # Create the test executable
 add_executable(
   ${PROJECT_NAME}_tests
-  inline_matrix_ops.cc
-  matrix_generators.cc
-  matrix_inverse.cc
-  util_float_eq.cc
+  test_serializer.cc
 )
 
 # Link with this library and GoogleTest
