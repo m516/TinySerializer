@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "TinySerializer", "index.html", [
+  [ "tinyserializer", "index.html", [
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -49,7 +49,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"Serializer_8hpp_source.html"
+"TinySerializer_8hpp_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

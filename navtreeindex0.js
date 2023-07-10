@@ -1,6 +1,6 @@
 var NAVTREEINDEX0 =
 {
-"Serializer_8hpp_source.html":[2,0,0,0],
+"TinySerializer_8hpp_source.html":[2,0,0,0],
 "annotated.html":[1,0],
 "classes.html":[1,1],
 "classserializer_1_1Deserializer.html":[1,0,0,1],
