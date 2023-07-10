@@ -25,8 +25,8 @@ if(NOT WIN32)
   set(BoldWhite   "${Esc}[1;37m")
 endif()
 
-project ("TinySerializer" C CXX)
-set (CMAKE_CXX_STANDARD 20) # We use new features like std::endian, std::float_32, ...
+project ("tinyserializer" C CXX)
+set (CMAKE_CXX_STANDARD 14)
 
 # Options
 option(${PROJECT_NAME}_BUILD_TESTS    "Build all projects in the 'test' folder (requires GoogleTest)"     ON)
@@ -44,24 +44,20 @@ message("${BoldMagenta}CMake utility directory: ${MACRO_DIRECTORY}${ColorReset}"
 # Manually define a compile-time definition
 # add_compile_definitions(USING_STANDARD_LIBRARY=1)
 
-
-# Serializer
-add_library (tinyserializer ${PROJECT_SOURCES}
-src/Serializer.hpp
-src/Serializer.cpp
+# TinyMatrixMath
+add_library (${PROJECT_NAME}
+src/TinySerializer.cpp
+src/TinySerializer.hpp
 )
-target_link_libraries (tinyserializer)
-target_include_directories(tinyserializer PUBLIC ${PROJECT_SOURCE_DIR}/src)
-target_compile_definitions(tinyserializer PUBLIC USING_STANDARD_LIBRARY)
-
-
+target_link_libraries (${PROJECT_NAME})
+target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/src)
+target_compile_definitions(${PROJECT_NAME} PUBLIC USING_STANDARD_LIBRARY)
 
 message("${BoldYellow}Library search complete!${ColorReset}")
 
   
 # Include tests.
 if(${PROJECT_NAME}_BUILD_TESTS)
-include(CTest)
 add_subdirectory ("test")
 endif()
 
@@ -84,7 +80,7 @@ set(DOXYGEN_HTML_STYLESHEET        ${PROJECT_SOURCE_DIR}/docs/thirdparty/doxygen
 set(DOXYGEN_HTML_COLORSTYLE        LIGHT)
 set(DOXYGEN_USE_MDFILE_AS_MAINPAGE ${PROJECT_SOURCE_DIR}/README.md)
 doxygen_add_docs(
-  ${PROJECT_NAME}_Doxygen
+  ${PROJECT_NAME}_docs
   ${PROJECT_SOURCE_DIR}/README.md
   ${PROJECT_SOURCE_DIR}/src
   COMMENT "Generate docs"
