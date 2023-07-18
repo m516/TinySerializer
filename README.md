@@ -34,6 +34,9 @@ or [Cap'n Proto](https://capnproto.org/capnp-tool.html), it can easily be integr
 many kinds of projects running on platforms ranging from Arduinos to supercomputers with its 
 native integration into the Arduino Library Manager and CMake, simplifying communication across such devices.
 
+Also compare to [SerialTransfer](https://github.com/PowerBroker2/SerialTransfer) for Arduinos,
+but with CMake support
+
 The [Sheldrake](https://github.com/m516/sheldrake) library employs this library to control 
 policies between desktop environments and microcontrollers.
 
